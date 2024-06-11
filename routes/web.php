@@ -6,9 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\PreventLoginIfAuthenticated;
 
-Route::get('/', function () {
-    return redirect()->route('login');
-});
+Route::redirect('/', '/login');
 
 Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('register', [AuthController::class, 'register']);
@@ -27,7 +25,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware('user')->group(function () {
-        Route::get('user', [UserController::class, 'dashboard'])->name('user.dashboard');
+        Route::get('user', [UserController::class, 'dashboard'])->name('users.dashboard');
     });
 });
 
