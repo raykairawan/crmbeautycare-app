@@ -26,7 +26,7 @@
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap p-0">
 						<h3 class="mb-4 text-center">
-							<a href="{{ route('register') }}">Have an account?</a> 
+							<a href="{{ route('register') }}">Doesn't have an account?</a> 
 						</h3>
                   		<form action="{{ route('login') }}" method="POST" class="signin-form">
 						@csrf	

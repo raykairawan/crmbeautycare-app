@@ -59,7 +59,7 @@
                                 <div class="input-group">
                                     <label class="label">Password Confirmation</label>
                                     <div class="input-group-icon">
-                                        <input id="password-field2" class="input--style-4" type="password" name="password" placeholder="Password Confirmation" required>
+                                        <input id="password-field2" class="input--style-4" type="password" name="password_confirmation" placeholder="Password Confirmation" required>
                                         <span toggle="#password-field2" class="fa fa-fw fa-eye field-icon toggle-password input-icon"></span>
                                     </div>
                                 </div>

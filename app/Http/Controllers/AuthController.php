@@ -7,11 +7,14 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
     public function register(Request $request)
     {
+        \Log::info('Register request received:', $request->all());
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -24,6 +27,7 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
+            \Log::info('Validation failed:', $validator->errors()->all());
             return back()->withErrors($validator)->withInput();
         }
 
@@ -42,7 +46,15 @@ class AuthController extends Controller
             $path = $request->file('img_url')->store('public/images');
             $user->img_url = Storage::url($path);
         }
-        
+
+        try {
+            $user->save();
+            \Log::info('User saved successfully:', ['user' => $user]);
+        } catch (\Exception $e) {
+            \Log::error('Error saving user:', ['error' => $e->getMessage()]);
+            return back()->withErrors(['error' => 'Error saving user'])->withInput();
+        }
+
         Auth::login($user);
 
         return $this->redirectBasedOnRole();
@@ -68,14 +80,18 @@ class AuthController extends Controller
     private function redirectBasedOnRole()
     {
         if (Auth::check()) {
+            \Log::info('User logged in:', ['user' => Auth::user()]);
+    
             $role = Auth::user()->role;
             if ($role == 'admin') {
+                \Log::info('Redirecting to admin dashboard');
                 return redirect()->route('admin.dashboard');
             } elseif ($role == 'user') {
+                \Log::info('Redirecting to user dashboard');
                 return redirect()->route('users.dashboard');
             }
         }
-        
+    
         return redirect('/');
     }
 
