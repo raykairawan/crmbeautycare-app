@@ -52,6 +52,9 @@ Route::middleware('auth')->group(function () {
     Route::middleware('user')->group(function () {
         Route::get('user', [UserController::class, 'dashboard'])->name('users.dashboard');
 
+        Route::get('categories', [UserController::class, 'allCategories'])->name('categories.all');
+        Route::get('categories/{category}', [UserController::class, 'showCategory'])->name('categories.show');
+
         Route::get('products', [UserProductController::class, 'index'])->name('user.products.index');
         Route::post('products/{product}/add-to-cart', [UserCartController::class, 'addToCart'])->name('user.products.addToCart');
     });

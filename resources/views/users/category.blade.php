@@ -3,13 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>SPA Center - Beauty & Spa HTML Template</title>
+    <title>TS - Category Id</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+	<link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -19,49 +17,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style2.css') }}">
 </head>
 
 <body>
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-light d-none d-lg-block">
-        <div class="row py-2 px-lg-5">
-            <div class="col-lg-6 text-left mb-2 mb-lg-0">
-                <div class="d-inline-flex align-items-center">
-                    <small><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</small>
-                    <small class="px-3">|</small>
-                    <small><i class="fa fa-envelope mr-2"></i>info@example.com</small>
-                </div>
-            </div>
-            <div class="col-lg-6 text-right">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text-primary px-2" href="">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a class="text-primary px-2" href="">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a class="text-primary px-2" href="">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a class="text-primary px-2" href="">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a class="text-primary pl-2" href="">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Topbar End -->
-
-
     <!-- Navbar Start -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
@@ -98,11 +62,11 @@
     <!-- Header Start -->
     <div class="jumbotron jumbotron-fluid bg-jumbotron" style="margin-bottom: 90px;">
         <div class="container text-center py-5">
-            <h3 class="text-white display-3 mb-4">Services</h3>
+            <h3 class="text-white display-3 mb-4">{{ $category->name }}</h3>
             <div class="d-inline-flex align-items-center text-white">
-                <p class="m-0"><a class="text-white" href="">Home</a></p>
+                <p class="m-0"><a class="text-white" href="{{ route('users.dashboard') }}">Home</a></p>
                 <i class="far fa-circle px-3"></i>
-                <p class="m-0">Services</p>
+                <p class="m-0">{{ $category->description }}</p>
             </div>
         </div>
     </div>
@@ -114,70 +78,21 @@
         <div class="row mx-0 justify-content-center text-center">
             <div class="col-lg-6">
                 <h6 class="d-inline-block bg-light text-primary text-uppercase py-1 px-2">Our Service</h6>
-                <h1>Spa & Beauty Services</h1>
+                <h1>Product Services</h1>
             </div>
         </div>
-        <div class="owl-carousel service-carousel">
-            <div class="service-item position-relative">
-                <img class="img-fluid" src="img/service-1.jpg" alt="">
-                <div class="service-text text-center">
-                    <h4 class="text-white font-weight-medium px-3">Body Massage</h4>
-                    <p class="text-white px-3 mb-3">Elitr labore sit dolor erat est lorem diam sea ipsum diam dolor duo sit ipsum</p>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="">Make Order</a>
+        <div class="row">
+            @foreach($products as $product)
+            <div class="col-md-4 pl-2 pr-2">
+                <div class="card mt-4 md-6 mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $product->name }}</h5>
+                        <p class="card-text">{{ $product->description }}</p>
+                        <p class="card-text">Harga: Rp. {{ number_format($product->price, 2, ',', '.') }}</p>
                     </div>
                 </div>
             </div>
-            <div class="service-item position-relative">
-                <img class="img-fluid" src="img/service-2.jpg" alt="">
-                <div class="service-text text-center">
-                    <h4 class="text-white font-weight-medium px-3">Stone Therapy</h4>
-                    <p class="text-white px-3 mb-3">Elitr labore sit dolor erat est lorem diam sea ipsum diam dolor duo sit ipsum</p>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="">Make Order</a>
-                    </div>
-                </div>
-            </div>
-            <div class="service-item position-relative">
-                <img class="img-fluid" src="img/service-3.jpg" alt="">
-                <div class="service-text text-center">
-                    <h4 class="text-white font-weight-medium px-3">Facial Therapy</h4>
-                    <p class="text-white px-3 mb-3">Elitr labore sit dolor erat est lorem diam sea ipsum diam dolor duo sit ipsum</p>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="">Make Order</a>
-                    </div>
-                </div>
-            </div>
-            <div class="service-item position-relative">
-                <img class="img-fluid" src="img/service-4.jpg" alt="">
-                <div class="service-text text-center">
-                    <h4 class="text-white font-weight-medium px-3">Skin Care</h4>
-                    <p class="text-white px-3 mb-3">Elitr labore sit dolor erat est lorem diam sea ipsum diam dolor duo sit ipsum</p>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="">Make Order</a>
-                    </div>
-                </div>
-            </div>
-            <div class="service-item position-relative">
-                <img class="img-fluid" src="img/service-5.jpg" alt="">
-                <div class="service-text text-center">
-                    <h4 class="text-white font-weight-medium px-3">Stream Bath</h4>
-                    <p class="text-white px-3 mb-3">Elitr labore sit dolor erat est lorem diam sea ipsum diam dolor duo sit ipsum</p>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="">Make Order</a>
-                    </div>
-                </div>
-            </div>
-            <div class="service-item position-relative">
-                <img class="img-fluid" src="img/service-6.jpg" alt="">
-                <div class="service-text text-center">
-                    <h4 class="text-white font-weight-medium px-3">Face Masking</h4>
-                    <p class="text-white px-3 mb-3">Elitr labore sit dolor erat est lorem diam sea ipsum diam dolor duo sit ipsum</p>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="">Make Order</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="row justify-content-center bg-appointment mx-0">
             <div class="col-lg-6 py-5">
@@ -314,20 +229,20 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('lib/tempusdominus/js/moment.min.js') }}"></script>
+    <script src="{{ asset('lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
+    <script src="{{ asset('lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 
     <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
+    <script src="{{ asset('mail/jqBootstrapValidation.min.js') }}"></script>
+    <script src="{{ asset('mail/contact.js') }}"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="{{ asset('js/main2.js') }}"></script>
 </body>
 
 </html>

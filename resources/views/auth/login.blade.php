@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
-<body class="img js-fullheight" style="background-image: url(images/bg.jpg);">
+<body class="img js-fullheight" style="background-image: url(images/bg_1.jpg);">
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
