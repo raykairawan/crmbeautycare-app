@@ -8,6 +8,7 @@ use App\Http\Middleware\PreventLoginIfAuthenticated;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\UserProductController;
+use App\Http\Controllers\AppointmentController;
 
 Route::redirect('/', '/login');
 
@@ -54,6 +55,9 @@ Route::middleware('auth')->group(function () {
 
         Route::get('categories', [UserController::class, 'allCategories'])->name('categories.all');
         Route::get('categories/{category}', [UserController::class, 'showCategory'])->name('categories.show');
+        Route::post('categories/{category}', [AppointmentController::class, 'store'])->name('appointments.store');
+
+        Route::get('appointments', [AppointmentController::class, 'indexUser'])->name('appointments.indexUser');
 
         Route::get('products', [UserProductController::class, 'index'])->name('user.products.index');
         Route::post('products/{product}/add-to-cart', [UserCartController::class, 'addToCart'])->name('user.products.addToCart');

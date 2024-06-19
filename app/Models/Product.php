@@ -17,4 +17,9 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function appointments()
+    {
+        return $this->belongsToMany(Appointment::class, 'appointment_product');
+    }
 }
