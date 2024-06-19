@@ -55,9 +55,8 @@ class AppointmentController extends Controller
 
     public function destroy(Appointment $appointment)
     {
-        $this->authorize('delete', $appointment);
         $appointment->delete();
 
-        return redirect()->route('appointments.index')->with('success', 'Appointment deleted successfully.');
+        return redirect()->route('admin.appointments.index');
     }
 }

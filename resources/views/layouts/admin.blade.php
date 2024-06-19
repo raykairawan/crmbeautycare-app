@@ -20,6 +20,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.products.index') }}">Products</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.appointments.index') }}">Appointments</a>
+                </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">

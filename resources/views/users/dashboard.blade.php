@@ -47,7 +47,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 m-0">
-                            <a href="appointment.html" class="dropdown-item">Appointment</a>
+                            <a href="{{ route('appointments.indexUser') }}" class="dropdown-item">Appointment</a>
                             <a href="opening.html" class="dropdown-item">Open Hours</a>
                             <a href="team.html" class="dropdown-item">Our Team</a>
                             <a href="testimonial.html" class="dropdown-item">Testimonial</a>
@@ -169,58 +169,6 @@
             @endforeach
         </div>
         </div>
-        <div class="row justify-content-center bg-appointment mx-0">
-            <div class="col-lg-6 py-5">
-                <div class="p-5 my-5" style="background: rgba(33, 30, 28, 0.7);">
-                    <h1 class="text-white text-center mb-4">Make Appointment</h1>
-                    <form>
-                        <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control bg-transparent p-4" placeholder="Your Name" required="required" />
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input type="email" class="form-control bg-transparent p-4" placeholder="Your Email" required="required" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <div class="date" id="date" data-target-input="nearest">
-                                        <input type="text" class="form-control bg-transparent p-4 datetimepicker-input" placeholder="Select Date" data-target="#date" data-toggle="datetimepicker"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <div class="time" id="time" data-target-input="nearest">
-                                        <input type="text" class="form-control bg-transparent p-4 datetimepicker-input" placeholder="Select Time" data-target="#time" data-toggle="datetimepicker"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <select class="custom-select bg-transparent px-4" style="height: 47px;">
-                                        <option selected>Select A Service</option>
-                                        <option value="1">Service 1</option>
-                                        <option value="2">Service 1</option>
-                                        <option value="3">Service 1</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <button class="btn btn-primary btn-block" type="submit" style="height: 47px;">Make Appointment</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
     <!-- Service End -->
 
@@ -322,142 +270,6 @@
     <!-- Pricing End -->
 
 
-    <!-- Team Start -->
-    <div class="container-fluid py-5">
-        <div class="container pt-5">
-            <div class="row justify-content-center text-center">
-                <div class="col-lg-6">
-                    <h6 class="d-inline-block bg-light text-primary text-uppercase py-1 px-2">Spa Specialist</h6>
-                    <h1 class="mb-5">Spa & Beauty Specialist</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="team position-relative overflow-hidden mb-5">
-                        <img class="img-fluid" src="img/team-1.jpg" alt="">
-                        <div class="position-relative text-center">
-                            <div class="team-text bg-primary text-white">
-                                <h5 class="text-white text-uppercase">Olivia Mia</h5>
-                                <p class="m-0">Spa & Beauty Expert</p>
-                            </div>
-                            <div class="team-social bg-dark text-center">
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team position-relative overflow-hidden mb-5">
-                        <img class="img-fluid" src="img/team-2.jpg" alt="">
-                        <div class="position-relative text-center">
-                            <div class="team-text bg-primary text-white">
-                                <h5 class="text-white text-uppercase">Cory Brown</h5>
-                                <p class="m-0">Spa & Beauty Expert</p>
-                            </div>
-                            <div class="team-social bg-dark text-center">
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team position-relative overflow-hidden mb-5">
-                        <img class="img-fluid" src="img/team-3.jpg" alt="">
-                        <div class="position-relative text-center">
-                            <div class="team-text bg-primary text-white">
-                                <h5 class="text-white text-uppercase">Elizabeth Ross</h5>
-                                <p class="m-0">Spa & Beauty Expert</p>
-                            </div>
-                            <div class="team-social bg-dark text-center">
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team position-relative overflow-hidden mb-5">
-                        <img class="img-fluid" src="img/team-4.jpg" alt="">
-                        <div class="position-relative text-center">
-                            <div class="team-text bg-primary text-white">
-                                <h5 class="text-white text-uppercase">Kelly Walke</h5>
-                                <p class="m-0">Spa & Beauty Expert</p>
-                            </div>
-                            <div class="team-social bg-dark text-center">
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Team End -->
-
-
-    <!-- Testimonial Start -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="row align-items-center">
-                <div class="col-lg-6 pb-5 pb-lg-0">
-                    <img class="img-fluid w-100" src="img/testimonial.jpg" alt="">
-                </div>
-                <div class="col-lg-6">
-                    <h6 class="d-inline-block text-primary text-uppercase bg-light py-1 px-2">Testimonial</h6>
-                    <h1 class="mb-4">What Our Clients Say!</h1>
-                    <div class="owl-carousel testimonial-carousel">
-                        <div class="position-relative">
-                            <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
-                            <div class="d-flex align-items-center mb-3">
-                                <img class="img-fluid rounded-circle" src="img/testimonial-1.jpg" style="width: 60px; height: 60px;" alt="">
-                                <div class="ml-3">
-                                    <h6 class="text-uppercase">Client Name</h6>
-                                    <span>Profession</span>
-                                </div>
-                            </div>
-                            <p class="m-0">Aliquyam sed elitr elitr erat sed diam ipsum eirmod eos lorem nonumy. Tempor sea ipsum diam  sed clita dolore eos dolores magna erat dolore sed stet justo et dolor.</p>
-                        </div>
-                        <div class="position-relative">
-                            <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
-                            <div class="d-flex align-items-center mb-3">
-                                <img class="img-fluid rounded-circle" src="img/testimonial-2.jpg" style="width: 60px; height: 60px;" alt="">
-                                <div class="ml-3">
-                                    <h6 class="text-uppercase">Client Name</h6>
-                                    <span>Profession</span>
-                                </div>
-                            </div>
-                            <p class="m-0">Aliquyam sed elitr elitr erat sed diam ipsum eirmod eos lorem nonumy. Tempor sea ipsum diam  sed clita dolore eos dolores magna erat dolore sed stet justo et dolor.</p>
-                        </div>
-                        <div class="position-relative">
-                            <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
-                            <div class="d-flex align-items-center mb-3">
-                                <img class="img-fluid rounded-circle" src="img/testimonial-3.jpg" style="width: 60px; height: 60px;" alt="">
-                                <div class="ml-3">
-                                    <h6 class="text-uppercase">Client Name</h6>
-                                    <span>Profession</span>
-                                </div>
-                            </div>
-                            <p class="m-0">Aliquyam sed elitr elitr erat sed diam ipsum eirmod eos lorem nonumy. Tempor sea ipsum diam  sed clita dolore eos dolores magna erat dolore sed stet justo et dolor.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
-
-
     <!-- Footer Start -->
     <div class="footer container-fluid position-relative bg-dark py-5" style="margin-top: 90px;">
         <div class="container pt-5">
@@ -519,10 +331,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-                    <p class="m-0 text-white">&copy; <a href="#">Your Site Name</a>. All Rights Reserved.</p>
+                    <p class="m-0 text-white">&copy; <a href="#">TS Beauty Care</a>. All Rights Reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-right">
-                    <p class="m-0 text-white">Designed by <a href="https://htmlcodex.com">HTML Codex</a></p>
+                    <p class="m-0 text-white">Designed by <a href="https://htmlcodex.com">TS Beauty Care</a></p>
                 </div>
             </div>
         </div>
