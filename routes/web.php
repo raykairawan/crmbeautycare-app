@@ -11,7 +11,9 @@ use App\Http\Controllers\UserProductController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\PaymentController;
 
-Route::redirect('/', '/login');
+Route::get('/', function () {
+    return auth()->check() ? redirect()->route('users.dashboard') : redirect()->route('login');
+})->name('home');
 
 Route::middleware(['web'])->group(function () {
     Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
