@@ -52,10 +52,10 @@
                   <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="about.html"> Categories</a>
+                  <a class="nav-link" href="{{ route('categories.all') }}"> Categories</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="jewellery.html">Products </a>
+                  <a class="nav-link" href="{{ route('products.all') }}">Products </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="contact.html">Appointments</a>

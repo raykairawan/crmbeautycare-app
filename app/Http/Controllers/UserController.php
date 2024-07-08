@@ -24,6 +24,9 @@ class UserController extends Controller
     public function allCategories()
     {
         $categories = Category::all();
+        if ($categories->isEmpty()) {
+            dd('No categories found');
+        }
         return view('users.allCategories', compact('categories'));
     }
 }

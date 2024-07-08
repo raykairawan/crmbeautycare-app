@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
-<body class="img js-fullheight" style="background-image: url(images/bg_1.jpg);">
+<body class="img js-fullheight" style="background-image: url(images/bg_3.jpg);">
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -26,7 +26,7 @@
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap p-0">
 						<h3 class="mb-4 text-center">
-							<a href="{{ route('register') }}">Doesn't have an account?</a> 
+							<a href="{{ route('register') }}" style="color: #fb930a">Doesn't have an account?</a> 
 						</h3>
                   		<form action="{{ route('login') }}" method="POST" class="signin-form">
 						@csrf	

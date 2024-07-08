@@ -10,7 +10,7 @@ class UserProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('user.products.index', compact('products'));
+        return view('users.allProducts', compact('products'));
     }
 
     public function addToCart(Product $product)
