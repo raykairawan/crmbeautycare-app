@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Appointments</title>
+    <title>Edit Form Diskon</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -60,26 +60,26 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="{{ route('admin.dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <div class="nav-item dropdown">
+                    <div class="nav-item dropdown active">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Categories</a>
                             <div class="dropdown-menu bg-transparent border-0">
                                 <a href="{{ route('admin.categories.index') }}" class="dropdown-item">Data</a>
                                 <a href="{{ route('admin.categories.create') }}" class="dropdown-item">Tambah Form</a>
                             </div>
                     </div>
-                    <div class="nav-item dropdown active">
+                    <div class="nav-item dropdown ">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Products</a>
                             <div class="dropdown-menu bg-transparent border-0">
                                 <a href="{{ route('admin.products.index') }}" class="dropdown-item">Data</a>
                                 <a href="{{ route('admin.products.create') }}" class="dropdown-item">Tambah Form</a>
                             </div>
                     </div>
-                    <a href="{{ route('admin.appointments.index') }}" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Appointments</a>
-                    <div class="nav-item dropdown">
+                    <a href="{{ route('admin.appointments.index') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Appointments</a>
+                    <div class="nav-item dropdown active">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Discounts</a>
                             <div class="dropdown-menu bg-transparent border-0">
                                 <a href="{{ route('admin.discounts.index') }}" class="dropdown-item">Data</a>
-                                <a href="{{ route('admin.discounts.create') }}" class="dropdown-item">Tambah Form</a>
+                                <a href="{{ route('admin.discounts.create') }}" class="dropdown-item active">Tambah Form</a>
                             </div>
                     </div>
                     <a href="{{ route('admin.feedback.index') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Feedbacks</a>
@@ -103,7 +103,6 @@
                     <input class="form-control border-0" type="search" placeholder="Search">
                 </form>
                 <div class="navbar-nav align-items-center ms-auto">
-                   
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <i class="fa fa-bell me-lg-2"></i>
@@ -147,54 +146,37 @@
             <!-- Navbar End -->
 
 
-            <!-- Table Start -->
+            <!-- Form Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-12">
-                    <div class="col-12">
                         <div class="bg-light rounded h-100 p-4">
-                            <div class="d-flex justify-content-between mb-3">
-                                <h2>Appointments</h2>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">No Telp</th>
-                                        <th scope="col">Reservation Date</th>
-                                        <th scope="col">Reservation Time</th>
-                                        <th scope="col">Category</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($appointments as $appointment)
-                                        <tr>
-                                            <td>{{ $appointment->name }}</td>
-                                            <td>{{ $appointment->no_tlp }}</td>
-                                            <td>{{ $appointment->reservation_date }}</td>
-                                            <td>{{ $appointment->reservation_time }}</td>
-                                            <td>{{ $appointment->category->name }}</td>
-                                            <td>{{ $appointment->status ? 'Sudah Dibayar' : 'Belum Bayar' }}</td>
-                                            <td>
-                                                <form action="{{ route('admin.appointments.destroy', $appointment) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                            <h6 class="mb-4">Edit Diskon</h6>
+                            <form action="{{ route('admin.discounts.update', $discount->id) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" value="{{ $discount->name }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Description</label>
+                                    <textarea class="form-control" id="description" name="description">{{ $discount->description }}</textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">Image</label>
+                                    <input type="file" class="form-control" id="image" name="image">
+                                    @if($discount->image)
+                                    <img src="{{ asset('storage/' . $discount->image) }}" alt="{{ $discount->name }}" width="100" class="mt-2">
+                                    @endif
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Table End -->
+            <!-- Form End -->
 
 
             <!-- Footer Start -->
@@ -202,7 +184,7 @@
                 <div class="bg-light rounded-top p-4">
                     <div class="row">
                         <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">TS Beauty Care</a>, All Right Reserved. 
+                        &copy; <a href="#">TS Beauty Care</a>, All Right Reserved. 
                         </div>
                         <div class="col-12 col-sm-6 text-center text-sm-end">
                             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
@@ -215,6 +197,9 @@
         </div>
         <!-- Content End -->
 
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
     <!-- JavaScript Libraries -->

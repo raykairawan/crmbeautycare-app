@@ -59,4 +59,14 @@ class AppointmentController extends Controller
 
         return redirect()->route('admin.appointments.index');
     }
+
+    
+    public function getReservedSlots(Request $request)
+    {
+        $reservedSlots = Appointment::whereDate('appointment_date', $request->date)
+                                    ->pluck('appointment_time')
+                                    ->toArray();
+
+        return response()->json($reservedSlots);
+    }
 }

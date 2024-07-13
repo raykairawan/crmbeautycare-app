@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Appointments</title>
+    <title>Feedback</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -67,14 +67,14 @@
                                 <a href="{{ route('admin.categories.create') }}" class="dropdown-item">Tambah Form</a>
                             </div>
                     </div>
-                    <div class="nav-item dropdown active">
+                    <div class="nav-item dropdown ">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Products</a>
                             <div class="dropdown-menu bg-transparent border-0">
                                 <a href="{{ route('admin.products.index') }}" class="dropdown-item">Data</a>
                                 <a href="{{ route('admin.products.create') }}" class="dropdown-item">Tambah Form</a>
                             </div>
                     </div>
-                    <a href="{{ route('admin.appointments.index') }}" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Appointments</a>
+                    <a href="{{ route('admin.appointments.index') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Appointments</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Discounts</a>
                             <div class="dropdown-menu bg-transparent border-0">
@@ -82,7 +82,7 @@
                                 <a href="{{ route('admin.discounts.create') }}" class="dropdown-item">Tambah Form</a>
                             </div>
                     </div>
-                    <a href="{{ route('admin.feedback.index') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Feedbacks</a>
+                    <a href="{{ route('admin.feedback.index') }}" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Feedbacks</a>
                 </div>
             </nav>
         </div>
@@ -154,39 +154,35 @@
                     <div class="col-12">
                         <div class="bg-light rounded h-100 p-4">
                             <div class="d-flex justify-content-between mb-3">
-                                <h2>Appointments</h2>
+                                <h2>Feedbacks</h2>
                             </div>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
-                                        <tr>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">No Telp</th>
-                                        <th scope="col">Reservation Date</th>
-                                        <th scope="col">Reservation Time</th>
-                                        <th scope="col">Category</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Actions</th>
-                                        </tr>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>User Name</th>
+                                        <th>Rating</th>
+                                        <th>Comment</th>
+                                        <th>Action</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($appointments as $appointment)
+                                    @foreach($feedbacks as $feedback)
                                         <tr>
-                                            <td>{{ $appointment->name }}</td>
-                                            <td>{{ $appointment->no_tlp }}</td>
-                                            <td>{{ $appointment->reservation_date }}</td>
-                                            <td>{{ $appointment->reservation_time }}</td>
-                                            <td>{{ $appointment->category->name }}</td>
-                                            <td>{{ $appointment->status ? 'Sudah Dibayar' : 'Belum Bayar' }}</td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $feedback->user->name }}</td>
+                                            <td>{{ $feedback->rating }}</td>
+                                            <td>{{ $feedback->comment }}</td>
                                             <td>
-                                                <form action="{{ route('admin.appointments.destroy', $appointment) }}" method="POST">
+                                                <form action="{{ route('admin.feedback.destroy', $feedback->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
-                                        @endforeach
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

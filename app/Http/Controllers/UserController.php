@@ -29,4 +29,6 @@ class UserController extends Controller
         }
         return view('users.allCategories', compact('categories'));
     }
+
+    
 }

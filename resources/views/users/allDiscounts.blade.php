@@ -12,7 +12,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Product List</title>
+  <title>Promo List</title>
   <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
 
   <!-- slider stylesheet -->
@@ -106,37 +106,21 @@
   <!-- Products Section -->
   <div class="container py-5 my-5">
     <div class="justify-content-center text-center">
-        <h6 class="d-inline-block bg-light text-warning text-uppercase py-1 px-2">Products</h6>
-        <h1 class="mb-5">Semua Produk</h1>
-    </div>
-    <div class="row mb-4">
-        <div class="col-md-4">
-            <form action="{{ route('products.filter') }}" method="GET">
-                <div class="input-group">
-                    <select class="form-control" name="category_id" onchange="this.form.submit()">
-                        <option value="">Pilih Kategori</option>
-                        @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </form>
-        </div>
+        <h6 class="d-inline-block bg-light text-warning text-uppercase py-1 px-2">Discounts</h6>
+        <h1 class="mb-5">Semua Promo</h1>
     </div>
     <div class="row">
-        @foreach($products as $product)
+        @foreach($discounts as $discount)
         <div class="col-md-4 mb-4">
             <div class="card h-100">
-                @if($product->image)
-                <img class="card-img-top" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                @if($discount->image)
+                <img class="card-img-top" src="{{ asset('storage/' . $discount->image) }}" alt="{{ $discount->name }}">
                 @else
-                <img class="card-img-top" src="{{ asset('img/product-placeholder.jpg') }}" alt="Product Image">
+                <img class="card-img-top" src="{{ asset('img/discount-placeholder.jpg') }}" alt="Discount Image">
                 @endif
                 <div class="card-body detail-box">
-                    <h5 class="card-title">{{ $product->name }}</h5>
-                    <p style="font-size: 14px; text-align: justify" class="card-text">{{ $product->description }}</p>
-                    <p class="card-text"><strong>Harga:</strong> {{ $product->formatted_price }}</p>
-                    <a href="{{ route('categories.show', $product->id) }}" class="btn btn-custom">Make Order</a>
+                    <h5 class="card-title">{{ $discount->name }}</h5>
+                    <p style="font-size: 14px; text-align: justify" class="card-text">{{ $discount->description }}</p>
                 </div>
             </div>
         </div>

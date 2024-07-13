@@ -7,9 +7,13 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\PreventLoginIfAuthenticated;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminDiscountController;
+use App\Http\Controllers\UserDiscountController;
 use App\Http\Controllers\UserProductController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\AdminFeedbackController;
+use App\Http\Controllers\UserFeedbackController;
 
 Route::get('/', function () {
     return auth()->check() ? redirect()->route('users.dashboard') : redirect()->route('login');
@@ -59,6 +63,20 @@ Route::middleware('auth')->group(function () {
             Route::put('{product}', [AdminProductController::class, 'update'])->name('admin.products.update');
             Route::delete('{product}', [AdminProductController::class, 'destroy'])->name('admin.products.destroy');
         });
+
+        Route::prefix('admin/discounts')->group(function () {
+            Route::get('/', [AdminDiscountController::class, 'index'])->name('admin.discounts.index');
+            Route::get('create', [AdminDiscountController::class, 'create'])->name('admin.discounts.create');
+            Route::post('store', [AdminDiscountController::class, 'store'])->name('admin.discounts.store');
+            Route::get('{discount}/edit', [AdminDiscountController::class, 'edit'])->name('admin.discounts.edit');
+            Route::put('{discount}', [AdminDiscountController::class, 'update'])->name('admin.discounts.update');
+            Route::delete('{discount}', [AdminDiscountController::class, 'destroy'])->name('admin.discounts.destroy');
+        });
+
+        Route::prefix('admin/feedbacks')->group(function () {
+            Route::get('/', [AdminFeedbackController::class, 'index'])->name('admin.feedback.index');
+            Route::delete('{feedback}', [AdminFeedbackController::class, 'destroy'])->name('admin.feedback.destroy');
+        });
     });
 
     /* USER */
@@ -70,13 +88,19 @@ Route::middleware('auth')->group(function () {
         Route::post('categories/{category}', [AppointmentController::class, 'store'])->name('appointments.store');
 
         Route::get('appointments', [AppointmentController::class, 'indexUser'])->name('appointments.indexUser');
+        Route::get('/api/reserved-slots', [AppointmentController::class, 'getReservedSlots']);
 
         Route::get('products', [UserProductController::class, 'index'])->name('products.all');
         Route::get('/products/filter', [UserProductController::class, 'filter'])->name('products.filter');
         Route::post('products/{product}/add-to-cart', [UserCartController::class, 'addToCart'])->name('user.products.addToCart');
 
+        Route::get('discounts', [UserDiscountController::class, 'index'])->name('discounts.all');
+
         Route::get('pay/{appointment}', [PaymentController::class, 'pay'])->name('pay');
         Route::post('payment/callback', [PaymentController::class, 'callback']);
+    
+        Route::get('feedback/create', [UserFeedbackController::class, 'create'])->name('feedback.create');
+        Route::post('appointments', [UserFeedbackController::class, 'store'])->name('feedback.store');
     });
 });
 

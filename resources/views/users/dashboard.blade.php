@@ -60,10 +60,10 @@
                   <a class="nav-link" href="{{ route('products.all') }}">Products </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Appointments</a>
+                  <a class="nav-link" href="{{ route('appointments.indexUser') }}">Appointments</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Promo</a>
+                  <a class="nav-link" href="{{ route('discounts.all') }}">Promo</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link whatsapp-button" onclick="sendMessage()">Whatsapp</a>

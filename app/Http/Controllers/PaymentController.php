@@ -36,8 +36,11 @@ class PaymentController extends Controller
             ],
         ];
     
+        $appointment->status = 1;
+        $appointment->save();
+
         $snapToken = Snap::getSnapToken($params);
-    
+
         return view('payment', compact('snapToken', 'appointment'));
     }
     
