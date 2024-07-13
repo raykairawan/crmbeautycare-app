@@ -72,8 +72,9 @@ Route::middleware('auth')->group(function () {
         Route::get('appointments', [AppointmentController::class, 'indexUser'])->name('appointments.indexUser');
 
         Route::get('products', [UserProductController::class, 'index'])->name('products.all');
+        Route::get('/products/filter', [UserProductController::class, 'filter'])->name('products.filter');
         Route::post('products/{product}/add-to-cart', [UserCartController::class, 'addToCart'])->name('user.products.addToCart');
-        
+
         Route::get('pay/{appointment}', [PaymentController::class, 'pay'])->name('pay');
         Route::post('payment/callback', [PaymentController::class, 'callback']);
     });

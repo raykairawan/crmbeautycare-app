@@ -13,6 +13,7 @@
   <meta name="author" content="" />
 
   <title>Product List</title>
+  <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
@@ -49,7 +50,7 @@
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home</a>
+                  <a class="nav-link" href="{{ route('users.dashboard') }}">Home</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('categories.all') }}"> Categories </a>
@@ -104,20 +105,42 @@
 
   <!-- Products Section -->
   <div class="container py-5 my-5">
-    <div class="row">
-      @foreach($products as $product)
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <img class="card-img-top" src="{{ asset('img/product-' . $loop->iteration . '.jpg') }}" alt="Product Image">
-            <div class="card-body detail-box">
-              <h5 class="card-title">{{ $product->name }}</h5>
-              <p style="font-size: 14px; text-align: justify" class="card-text">{{ $product->description }}</p>
-              <p class="card-text"><strong>Price:</strong> ${{ $product->price }}</p>
-              <a href="{{ route('user.products.addToCart', $product->id) }}" class="btn btn-custom">Add to Cart</a>
-            </div>
-          </div>
+    <div class="justify-content-center text-center">
+        <h6 class="d-inline-block bg-light text-warning text-uppercase py-1 px-2">Products</h6>
+        <h1 class="mb-5">Semua Produk</h1>
+    </div>
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <form action="{{ route('products.filter') }}" method="GET">
+                <div class="input-group">
+                    <select class="form-control" name="category_id" onchange="this.form.submit()">
+                        <option value="">Pilih Kategori</option>
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </form>
         </div>
-      @endforeach
+    </div>
+    <div class="row">
+        @foreach($products as $product)
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                @if($product->image)
+                <img class="card-img-top" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                @else
+                <img class="card-img-top" src="{{ asset('img/product-placeholder.jpg') }}" alt="Product Image">
+                @endif
+                <div class="card-body detail-box">
+                    <h5 class="card-title">{{ $product->name }}</h5>
+                    <p style="font-size: 14px; text-align: justify" class="card-text">{{ $product->description }}</p>
+                    <p class="card-text"><strong>Harga:</strong> {{ $product->formatted_price }}</p>
+                    <a href="{{ route('user.products.addToCart', $product->id) }}" class="btn btn-custom">Make Order</a>
+                </div>
+            </div>
+        </div>
+        @endforeach
     </div>
   </div>
   <!-- End Products Section -->

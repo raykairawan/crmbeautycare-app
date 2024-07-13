@@ -27,9 +27,15 @@ class AdminProductController extends Controller
             'description' => 'nullable',
             'price' => 'required|numeric',
             'category_id' => 'required|exists:categories,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        Product::create($request->all());
+        $data = $request->all();
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('images/products', 'public');
+        }
+
+        Product::create($data);
 
         return redirect()->route('admin.products.index');
     }
@@ -47,15 +53,29 @@ class AdminProductController extends Controller
             'description' => 'nullable',
             'price' => 'required|numeric',
             'category_id' => 'required|exists:categories,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $product->update($request->all());
+        $data = $request->all();
+        if ($request->hasFile('image')) {
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
+
+            $data['image'] = $request->file('image')->store('images/products', 'public');
+        }
+
+        $product->update($data);
 
         return redirect()->route('admin.products.index');
     }
 
     public function destroy(Product $product)
     {
+        if ($product->image) {
+            Storage::disk('public')->delete($product->image);
+        }
+
         $product->delete();
 
         return redirect()->route('admin.products.index');

@@ -13,6 +13,7 @@
   <meta name="author" content="" />
 
   <title>Categories List</title>
+  <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
@@ -49,7 +50,7 @@
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
             <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home</a>
+                  <a class="nav-link" href="{{ route('users.dashboard') }}">Home</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('categories.all') }}"> Categories  <span class="sr-only">(current)</span></a>
@@ -101,6 +102,10 @@
 
   <!-- Categories Section -->
   <div class="container py-5 my-5">
+    <div class="justify-content-center text-center">
+        <h6 class="d-inline-block bg-light text-warning text-uppercase py-1 px-2">Categories</h6>
+        <h1 class="mb-5">Semua Kategori</h1>
+    </div>
     <div class="row">
       @foreach($categories as $category)
       <div class="col-md-4 mb-4">

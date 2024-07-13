@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('other/img/favicon.ico') }}" rel="icon">
+    <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -188,20 +188,19 @@
 
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="name">Nama</span>
-                                    <input type="text" class="form-control" name="name" required placeholder="Nama Produk" aria-label="Nama Produk"
-                                        aria-describedby="name">
+                                    <input type="text" class="form-control" name="name" required placeholder="Nama Produk" aria-label="Nama Produk" aria-describedby="name">
                                 </div>
 
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="description">Keterangan</span>
-                                    <input type="text" class="form-control" placeholder="Deskripsi Produk" aria-label="Deskripsi Produk"
-                                        aria-describedby="description">
+                                    <input type="text" class="form-control" name="description" placeholder="Deskripsi Produk" aria-label="Deskripsi Produk" aria-describedby="description">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="price">Price</label>
                                     <input type="number" class="form-control" id="price" name="price" step="0.01" required>
                                 </div>
+
                                 <div class="form-group">
                                     <label for="category_id">Category</label>
                                     <select class="form-control" id="category_id" name="category_id" required>
@@ -211,6 +210,11 @@
                                     </select>
                                 </div>
 
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">Image</label>
+                                    <input class="form-control" type="file" id="image" name="image">
+                                </div>
+                                
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                             </form>
                         </div>
@@ -218,6 +222,7 @@
                 </div>
             </div>
             <!-- Form End -->
+
 
 
             <!-- Footer Start -->

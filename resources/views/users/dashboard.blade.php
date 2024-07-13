@@ -14,6 +14,8 @@
 
   <title>TS Beauty Care</title>
 
+  <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
+
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
 
@@ -49,7 +51,7 @@
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="{{ route('users.dashboard') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('categories.all') }}"> Categories</a>
@@ -418,8 +420,8 @@
         <div class="col-md-6">
           <div class="map_container">
             <div class="map-responsive">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.263363203273!2d107.8566795737955!3d-7.210767870791855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68b07f6f163333%3A0xa1918acf6bb243b8!2sJl.%20Raya%20Samarang%20No.76%2C%20Cintarakyat%2C%20Kec.%20Samarang%2C%20Kabupaten%20Garut%2C%20Jawa%20Barat%2044151!5e0!3m2!1sid!2sid!4v1720318478307!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            </div>
-          </div>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.263363203273!2d107.8566795737955!3d-7.210767870791855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68b07f6f163333%3A0xa1918acf6bb243b8!2sJl.%20Raya%20Samarang%20No.76%2C%20Cintarakyat%2C%20Kec.%20Samarang%2C%20Kabupaten%20Garut%2C%20Jawa%20Barat%2044151!5e0!3m2!1sid!2sid!4v1720318478307!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            </div>
+            </div>
         </div>
       </div>
     </div>

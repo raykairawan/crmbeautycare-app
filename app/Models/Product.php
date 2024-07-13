@@ -11,7 +11,7 @@ class Product extends Model
 
     protected $table = 'products';
 
-    protected $fillable = ['name', 'description', 'price', 'category_id'];
+    protected $fillable = ['name', 'description', 'image', 'price', 'category_id'];
 
     public function category()
     {
@@ -21,5 +21,11 @@ class Product extends Model
     public function appointments()
     {
         return $this->belongsToMany(Appointment::class, 'appointment_product');
+    }
+
+    // Accessor for formatted price
+    public function getFormattedPriceAttribute()
+    {
+        return 'Rp. ' . number_format($this->attributes['price'], 2, ',', '.');
     }
 }

@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('other/img/favicon.ico') }}" rel="icon">
+    <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -143,20 +143,18 @@
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-12">
                         <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Edit Kategori</h6>
-                            <form action="{{ route('admin.products.update', $product->id) }}" method="POST">
+                            <h6 class="mb-4">Edit Product</h6>
+                            <form action="{{ route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="name">Nama</span>
-                                    <input type="text" class="form-control" name="name" required value="{{ $product->name }}"
-                                        aria-describedby="name">
+                                    <span class="input-group-text" id="name">Name</span>
+                                    <input type="text" class="form-control" name="name" required value="{{ $product->name }}" aria-describedby="name">
                                 </div>
 
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="description">Keterangan</span>
-                                    <input type="text" class="form-control"  name="description" value="{{ $product->description }}"
-                                        aria-describedby="description">
+                                    <span class="input-group-text" id="description">Description</span>
+                                    <input type="text" class="form-control" name="description" value="{{ $product->description }}" aria-describedby="description">
                                 </div>
 
                                 <div class="form-group">
@@ -173,12 +171,21 @@
                                     </select>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">Image</label>
+                                    <input class="form-control" type="file" id="image" name="image">
+                                    @if($product->image)
+                                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" width="100" class="mt-2">
+                                    @endif
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Save</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+
             <!-- Form End -->
 
 
